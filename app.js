@@ -9,7 +9,9 @@ const resultado = document.getElementById('resultado');
 
 var quantidade,inicio, fim;
 
-campoQuantidade.focus();
+document.addEventListener('DOMContentLoaded', () => {
+    campoQuantidade.focus();
+});
 
 botaoSortear.addEventListener('click', () => {
     sortear();
@@ -39,7 +41,7 @@ function reiniciar() {
         '<label class="texto__paragrafo">' +
         'Números sorteados: nenhum até agora' +
         '</label>';
-        
+
     botaoReiniciar.disabled = true;
     botaoReiniciar.classList.add('desabilitado');
 
