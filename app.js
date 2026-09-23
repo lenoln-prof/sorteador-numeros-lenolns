@@ -64,4 +64,17 @@ function executarSorteio(quantidade) {
         '<label class="texto__paragrafo">' +
             `Números sorteados: ${sorteados.join(' ')}` +
         '</label>';
+
+    habilitarBotaoReiniciar();
+        
+}
+
+
+function habilitarBotaoReiniciar() {
+    
+    const botaoReiniciar = document.getElementById('btn-reiniciar');
+
+    console.log(botaoReiniciar);
+    botaoReiniciar.disabled = false;
+    botaoReiniciar.classList.remove('desabilitado');
 }
