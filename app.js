@@ -2,14 +2,48 @@ const campoQuantidade = document.getElementById('quantidade');
 const campoInicio = document.getElementById('de');
 const campoFim = document.getElementById('ate');
 
+const botaoReiniciar = document.getElementById('btn-reiniciar');
+const botaoSortear = document.getElementById('btn-sortear');
+
+const resultado = document.getElementById('resultado');
+
 var quantidade,inicio, fim;
+
+campoQuantidade.focus();
+
+botaoSortear.addEventListener('click', () => {
+    sortear();
+});
+
+campoFim.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        sortear();
+    }
+});
+
+botaoReiniciar.addEventListener('click', () => {
+    reiniciar();
+});
+
 
 function sortear() {
     verificarCampos();
 }
 
 function reiniciar() {
-    // restauração do estado inicial
+    document.getElementById('quantidade').value = '';
+    document.getElementById('de').value = '';
+    document.getElementById('ate').value = '';
+
+    resultado.innerHTML =
+        '<label class="texto__paragrafo">' +
+        'Números sorteados: nenhum até agora' +
+        '</label>';
+        
+    botaoReiniciar.disabled = true;
+    botaoReiniciar.classList.add('desabilitado');
+
+    campoQuantidade.focus();
 }
 
 function verificarCampos() {
@@ -59,7 +93,6 @@ function executarSorteio(quantidade) {
         sorteados.push(numero);
     }
 
-    const resultado = document.getElementById('resultado');
     resultado.innerHTML =
         '<label class="texto__paragrafo">' +
             `Números sorteados: ${sorteados.join(' ')}` +
@@ -69,12 +102,7 @@ function executarSorteio(quantidade) {
         
 }
 
-
 function habilitarBotaoReiniciar() {
-    
-    const botaoReiniciar = document.getElementById('btn-reiniciar');
-
-    console.log(botaoReiniciar);
     botaoReiniciar.disabled = false;
     botaoReiniciar.classList.remove('desabilitado');
 }
